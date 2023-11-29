@@ -108,7 +108,8 @@ body {
 
 .footer {
     margin-top: 290px;
-    width: 966px;
+    width: 100%;
+    max-width: 966px;
     height: 100px;
     border-radius: 17px;
     background: #487d95;
@@ -120,7 +121,7 @@ body {
     width: 100%; /* Adjust as needed */
     max-width: 800px;
     height: 400px;
-    margin-top: 200px;
+    margin-top: 300px;
     border-radius: 17px;
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
@@ -130,7 +131,7 @@ body {
     justify-content: flex-start;
     flex-direction: column;
     backdrop-filter: blur(2px);
-    padding: 20px;
+    padding: 40px;
 }
 
 .abouttext {
@@ -151,4 +152,34 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 40px;
+}
+
+@media (max-width: 800px) {
+    .abouttext {
+        font-size: 23px;
+    }
+    
+    .abouttitle {
+        font-size: 40px;
+    }
+    
+    .foottitle {
+        font-size: 23px;
+    }
+}
+
+.controltab {
+    width: 100%; /* Adjust as needed */
+    max-width: 400px;
+    height: 100px;
+    margin-top: 200px;
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+    padding: 40px;
 }
