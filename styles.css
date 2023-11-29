@@ -1,3 +1,14 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
+
 .background {
     background-image: url("assets/loadingpage.gif");
     background-size: cover;
@@ -10,4 +21,46 @@
     top: 0;
     left: 0;
     z-index: -1;
+}
+/* To prevent content from going above the viewport,
+   set justify-content: flex-start; on the container.
+   This ensures content starts from the top of the container,
+   preventing it from being centered vertically and overflowing above. */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px; /* Adjust padding as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100vh; /* Full viewport height */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Adjust justification as needed */
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px; /* Adjust padding as needed */
+    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100vh; /* Full viewport height */
+}
+
+.glass {
+    width: 100%; /* Adjust as needed */
+    max-width: 966px;
+    height: 545px;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    backdrop-filter: blur(2px);
 }
