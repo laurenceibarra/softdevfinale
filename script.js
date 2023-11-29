@@ -14,35 +14,11 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-    
-  const boxes = document.querySelectorAll('.box');
-    //  so there will be no overflow in the audio
-  let currentAudio = null;
-
-  boxes.forEach(box => {
-      box.addEventListener('click', function () {
-          const audioSrc = this.getAttribute('data-src');
-          playAudio(audioSrc);
-      });
-  });
-  
-//   sets the the data-src to play
-  function playAudio(src) {
-      if (currentAudio) {
-          currentAudio.pause();
-      }
-
-      const audio = new Audio(src);
-      audio.play();
-      currentAudio = audio;
-  }
-});
-
-AOS.init();
+    AOS.init();
 
 // You can also pass an optional settings object
 // below listed default settings
-AOS.init({
+    AOS.init({
   // Global settings:
   disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
   startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
@@ -64,3 +40,27 @@ AOS.init({
   anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
 
 });
+
+    const boxes = document.querySelectorAll('.box');
+    //  so there will be no overflow in the audio
+    let currentAudio = null;
+
+  boxes.forEach(box => {
+      box.addEventListener('click', function () {
+          const audioSrc = this.getAttribute('data-src');
+          playAudio(audioSrc);
+      });
+  });
+  
+//   sets the the data-src to play
+  function playAudio(src) {
+      if (currentAudio) {
+          currentAudio.pause();
+      }
+
+      const audio = new Audio(src);
+      audio.play();
+      currentAudio = audio;
+  }
+});
+
