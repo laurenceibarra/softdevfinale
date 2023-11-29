@@ -3,6 +3,7 @@
     box.addeventlistener(click)
     set an audio source to the datasrc of the box
     use playaudio(audio)
+    get gif url from the box
 
     define playaudio
     if current audio is true, there is playing
@@ -11,6 +12,12 @@
     create a new audio var
     play function
     set current audio to the new audio
+
+
+    define changebg
+    docquery bg
+    bg.style.backgroundimage = url(imageurl)
+
  */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -42,13 +49,29 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
     const boxes = document.querySelectorAll('.box');
+    var element = document.body;
     //  so there will be no overflow in the audio
     let currentAudio = null;
 
-  boxes.forEach(box => {
+  boxes.forEach((box,index) => {
       box.addEventListener('click', function () {
           const audioSrc = this.getAttribute('data-src');
           playAudio(audioSrc);
+      });
+
+      box.addEventListener('click', function () {
+        const imageurl = this.getAttribute('data-gif');
+        changeBg(imageurl);
+
+        
+        if(index == 2) {
+            darkMode();
+        }
+        else {
+            element.classList.remove("dark-mode");
+        }
+
+        
       });
   });
   
@@ -61,6 +84,15 @@ document.addEventListener('DOMContentLoaded', function () {
       const audio = new Audio(src);
       audio.play();
       currentAudio = audio;
+  }
+
+  function changeBg(imageurl){
+    const bg = document.querySelector('.background');
+    bg.style.backgroundImage = 'url(' + imageurl + ')';
+  }
+
+  function darkMode(){
+    element.classList.toggle("dark-mode");
   }
 });
 

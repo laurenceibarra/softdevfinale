@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: ease-in-out 0.5s;
 }
 
 body {
@@ -10,7 +11,7 @@ body {
 }
 
 .background {
-    background-image: url("assets/landingpage.gif");
+    background-image: url("assets/loadingpage.gif");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -21,6 +22,7 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+
 }
 /* To prevent content from going above the viewport,
    set justify-content: flex-start; on the container.
@@ -69,6 +71,35 @@ body {
     backdrop-filter: blur(2px);
 }
 
+.details, .abouttext .abouttitle {
+    transition: ease-in-out 0.2s;
+}
+
+.dark-mode .glass {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .about {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .controltab {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .details,
+.dark-mode .abouttext,
+.dark-mode .abouttitle,
+.dark-mode .credits {
+    color: #fff; 
+} 
+
+.credits {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    margin-top: 90px;
+}
+
 .details {
     font-family: 'DM Sans', sans-serif;
     color: #1f1f1f;
@@ -79,6 +110,26 @@ body {
 
 .image1 {
     background-image: url('assets/subwoofer.png');
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 17px;
+    flex-shrink: 0;
+}
+
+.image2 {
+    background-image: url('assets/wet\ hands.png');
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    width: 150px;
+    border-radius: 17px;
+    flex-shrink: 0;
+}
+
+.image3 {
+    background-image: url('assets/key.png');
     background-size: cover;
     background-position: center;
     height: 150px;
@@ -107,12 +158,12 @@ body {
 
 
 .footer {
-    margin-top: 290px;
+    margin-top: 300px;
     width: 100%;
     max-width: 966px;
     height: 100px;
     border-radius: 17px;
-    background: #487d95;
+    background: #282828;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     flex-shrink: 0;
 }
@@ -135,9 +186,9 @@ body {
 }
 
 .abouttext {
-    margin-top: 30px;
+    margin-top: 10px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 40px;
+    font-size: 30px;
     color: #1f1f1f;
     display: flex;
     align-items: center;
@@ -156,7 +207,7 @@ body {
 
 @media (max-width: 800px) {
     .abouttext {
-        font-size: 23px;
+        font-size: 19px;
     }
     
     .abouttitle {
@@ -165,6 +216,10 @@ body {
     
     .foottitle {
         font-size: 19px;
+    }
+
+    .credits {
+        font-size: 12px;
     }
 }
 
