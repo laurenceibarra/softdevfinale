@@ -1,98 +1,114 @@
-/*  doc.addeventlistener(when all content in document has loaded, func())
-    box = allboxes using queryselector(.box)
-    box.addeventlistener(click)
-    set an audio source to the datasrc of the box
-    use playaudio(audio)
-    get gif url from the box
-
-    define playaudio
-    if current audio is true, there is playing
-    when clicked, the audio is paused
-
-    create a new audio var
-    play function
-    set current audio to the new audio
-
-
-    define changebg
-    docquery bg
-    bg.style.backgroundimage = url(imageurl)
-
- */
-
+// Wait for the DOM content to be fully loaded before executing the script
 document.addEventListener('DOMContentLoaded', function () {
-    AOS.init();
+  // Initialize AOS (Animate on Scroll) library
+  AOS.init({
+      // Global settings:
+      disable: false,
+      startEvent: 'DOMContentLoaded',
+      initClassName: 'aos-init',
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false,
+      debounceDelay: 50,
+      throttleDelay: 99,
+      offset: 120,
+      delay: 0,
+      duration: 400,
+      easing: 'ease',
+      once: false,
+      mirror: false,
+      anchorPlacement: 'top-bottom',
+  });
 
-// You can also pass an optional settings object
-// below listed default settings
-    AOS.init({
-  // Global settings:
-  disable: false, // accepts following values: 'phone', 'tablet', 'mobile', boolean, expression or function
-  startEvent: 'DOMContentLoaded', // name of the event dispatched on the document, that AOS should initialize on
-  initClassName: 'aos-init', // class applied after initialization
-  animatedClassName: 'aos-animate', // class applied on animation
-  useClassNames: false, // if true, will add content of `data-aos` as classes on scroll
-  disableMutationObserver: false, // disables automatic mutations' detections (advanced)
-  debounceDelay: 50, // the delay on debounce used while resizing window (advanced)
-  throttleDelay: 99, // the delay on throttle used while scrolling the page (advanced)
-  
+  // Select all elements with the class 'box'
+  const boxes = document.querySelectorAll('.box');
+  // Select the body element
+  const element = document.body;
+  // Initialize variables for audio control
+  let currentAudio = null;
+  let isPlaying = false;
+  // Select the play/pause button element
+  const playPauseBtn = document.getElementById('playPauseBtn');
 
-  // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 400, // values from 0 to 3000, with step 50ms
-  easing: 'ease', // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: 'top-bottom', // defines which position of the element regarding to window should trigger the animation
-
-});
-
-    const boxes = document.querySelectorAll('.box');
-    var element = document.body;
-    //  so there will be no overflow in the audio
-    let currentAudio = null;
-
-  boxes.forEach((box,index) => {
+  // Event listeners for each box
+  boxes.forEach((box, index) => {
+      // Click event for playing audio and changing background
       box.addEventListener('click', function () {
           const audioSrc = this.getAttribute('data-src');
           playAudio(audioSrc);
       });
 
       box.addEventListener('click', function () {
-        const imageurl = this.getAttribute('data-gif');
-        changeBg(imageurl);
+          const imageurl = this.getAttribute('data-gif');
+          changeBg(imageurl);
 
-        
-        if(index == 2) {
-            darkMode();
-        }
-        else {
-            element.classList.remove("dark-mode");
-        }
-
-        
+          // Toggle dark mode based on box index
+          if (index === 2) {
+              darkMode();
+          } else {
+              element.classList.remove("dark-mode");
+          }
       });
   });
+
+  // Event listener for play/pause button
+  playPauseBtn.addEventListener('click', togglePlayPause);
   
-//   sets the the data-src to play
+
+  // Play audio function
   function playAudio(src) {
+      // Pause current audio if it exists
       if (currentAudio) {
           currentAudio.pause();
       }
 
+      // Create a new Audio object with the provided source
       const audio = new Audio(src);
-      audio.play();
       currentAudio = audio;
+
+      // Update play/pause button state and play audio
+      isPlaying = true;
+      updatePlayPauseButton();
+      audio.play();
   }
 
-  function changeBg(imageurl){
-    const bg = document.querySelector('.background');
-    bg.style.backgroundImage = 'url(' + imageurl + ')';
+  // Change background function
+  function changeBg(imageurl) {
+      const bg = document.querySelector('.background');
+      // Set background image to the provided URL
+      bg.style.backgroundImage = 'url(' + imageurl + ')';
   }
 
-  function darkMode(){
-    element.classList.toggle("dark-mode");
+  // Toggle dark mode function
+  function darkMode() {
+      // Toggle the 'dark-mode' class on the body element
+      element.classList.toggle("dark-mode");
   }
+
+  // Toggle play/pause button function
+  function togglePlayPause() {
+      // Toggle the play/pause state and update the button appearance
+      isPlaying = !isPlaying;
+      updatePlayPauseButton();
+
+      // If there is a current audio, play or pause accordingly
+      if (currentAudio) {
+          isPlaying ? currentAudio.play() : currentAudio.pause();
+      }
+  }
+  
+  const footerBtn = document.getElementById('footerBtn');
+  footerBtn.addEventListener('click', scrollToFooter);
+
+  function scrollToFooter() {
+      const footer = document.getElementById('footer');
+      footer.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  }
+  // Update play/pause button appearance
+  function updatePlayPauseButton() {
+      // Toggle the 'play' and 'pause' classes based on the play state
+      playPauseBtn.classList.toggle('play', isPlaying);
+      playPauseBtn.classList.toggle('pause', !isPlaying);
+  }
+// Remove the extra closing parenthesis and semicolon from here
 });
-

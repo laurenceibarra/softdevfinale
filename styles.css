@@ -5,6 +5,10 @@
     transition: ease-in-out 0.5s;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -237,4 +241,55 @@ body {
     justify-content: center;
     backdrop-filter: blur(2px);
     padding: 40px;
+}
+
+#playPauseBtn {
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+#playPauseBtn i {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Add animation styles */
+#playPauseBtn.play i::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z"/></svg>');
+    animation: spin 0.5s linear forwards;
+    transition: ease-in-out 0.5s;
+}
+
+#playPauseBtn.pause i::before {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="16" width="10" viewBox="0 0 320 512"><!--!Font Awesome Free 6.5.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.--><path d="M0 32l224 224-224 224z"/></svg>');
+    animation: spin 0.5s linear forwards;
+    transition: ease-in-out 0.5s;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#footerBtn {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
 }
