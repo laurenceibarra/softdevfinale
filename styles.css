@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    transition: ease-in-out 0.5s;
+    font-family: DM Sans, sans-serif;
+    transition: opacity 0.5s ease-in-out;
 }
 
 html {
@@ -12,6 +13,16 @@ html {
 body {
     margin: 0;
     overflow: hidden;
+}
+
+.hideable {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hideable.hidden {
+    opacity: 0 !important;
+    visibility: hidden;
 }
 
 .background {
@@ -282,11 +293,25 @@ body {
 
 #footerBtn {
     width: 50px;
-    height: 50px;
+    height: 30px;
     margin-left: 20px;
     border: none;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
-    border-radius: 50%;
+    border-radius: 10%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+#hideBtn {
+    width: 50px;
+    height: 30px;
+    margin-right: 20px;
+    border: none;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
+    border-radius: 10%;
     cursor: pointer;
     display: flex;
     align-items: center;

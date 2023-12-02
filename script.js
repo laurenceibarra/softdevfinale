@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let isPlaying = false;
   // Select the play/pause button element
   const playPauseBtn = document.getElementById('playPauseBtn');
+  // Event listener for play/pause button
+  playPauseBtn.addEventListener('click', togglePlayPause);
+  const hideBtn = document.getElementById('hideBtn');
+  hideBtn.addEventListener('click', hideelements);
 
   // Event listeners for each box
   boxes.forEach((box, index) => {
@@ -51,8 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 
-  // Event listener for play/pause button
-  playPauseBtn.addEventListener('click', togglePlayPause);
+    
   
 
   // Play audio function
@@ -101,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
   footerBtn.addEventListener('click', scrollToFooter);
 
   function scrollToFooter() {
-      const footer = document.getElementById('footer');
+      const footer = document.getElementById('creditssection');
       footer.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
   }
   // Update play/pause button appearance
@@ -110,5 +113,24 @@ document.addEventListener('DOMContentLoaded', function () {
       playPauseBtn.classList.toggle('play', isPlaying);
       playPauseBtn.classList.toggle('pause', !isPlaying);
   }
+
+  function hideelements() {
+    const hideableSections = document.querySelectorAll('.hideable');
+
+    if (hideableSections.length > 0) {
+        hideableSections.forEach((hideableSection) => {
+            // Add a short delay to ensure the transition is triggered
+            setTimeout(() => {
+                // Toggle the 'hidden' class immediately
+                hideableSection.classList.toggle('hidden');
+
+                AOS.refresh();
+            }, 10); // Adjust the delay (in milliseconds) as needed
+        });
+    }
+}
+
+
+
 // Remove the extra closing parenthesis and semicolon from here
 });

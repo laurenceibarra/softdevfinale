@@ -15,7 +15,7 @@
 
 <body class = "background">
     <section class = "container">
-        <div class = "glass"
+        <div class = "hideable glass"
         data-aos = "fade-in" 
         data-aos-offset="200"
         data-aos-delay="50"
@@ -58,15 +58,24 @@
         </div>
 
         <div class = "controltab">
+
+            <button id="hideBtn" onclick="hideelements()">
+                Hide
+                <i></i>
+            </button>
+
             <button id="playPauseBtn" onclick="togglePlayPause()">
                 <i></i>
             </button>
+
             <button id="footerBtn" onclick="scrollToFooter()">
+                About
                 <i></i>
             </button>
+            
         </div>
 
-        <div class = "about"
+        <div class = "hideable about"
         data-aos="fade-in"
         data-aos-offset="200"
         data-aos-delay="50"
@@ -86,11 +95,11 @@
                 through c418's music.
             </p>
         </div>
-        <footer id = "footer" class = "footer">
+        <footer id = "footer" class = "hideable footer">
             <p class = "foottitle">Listen to the full playlist on Spotify<p>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6DJVEZkTkYG8SZS9z9sMxh?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </footer>
-        <p class = "credits">All credits to the owners of the gifs and c418</p>
+        <p id = "creditssection" class = "hideable credits">All credits to the owners of the gifs and c418</p>
     </section>
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>
