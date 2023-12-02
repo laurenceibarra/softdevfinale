@@ -37,6 +37,7 @@ body {
     top: 0;
     left: 0;
     z-index: -1;
+    transition: ease-in-out 0.5s;
 
 }
 /* To prevent content from going above the viewport,
@@ -54,22 +55,10 @@ body {
     height: 100vh; /* Full viewport height */
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center;
-    box-sizing: border-box;
-    padding: 20px; 
-    overflow-y: auto; /* Enable vertical scrolling */
-    height: 100vh; /* Full viewport height */
-}
-
 .header {
     max-width: 966px;
     height: 100px;
 }
-
 .glass {
     width: 100%; /* Adjust as needed */
     max-width: 966px;
@@ -95,10 +84,6 @@ body {
 }
 
 .dark-mode .about {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .controltab {
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -244,13 +229,10 @@ body {
     height: 100px;
     margin-top: 200px;
     border-radius: 17px;
-    background: rgba(255, 255, 255, 0.25);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.514);
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(2px);
     padding: 40px;
 }
 
